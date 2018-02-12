@@ -2,6 +2,7 @@
 #define InfoNestExamples_BetaBinomial_h
 
 #include <cstdlib>
+#include <ostream>
 #include <RNG.h>
 
 namespace InfoNestExamples
@@ -19,6 +20,10 @@ class BetaBinomial
         // Number of successes
         unsigned int x;
 
+        // Log likelihood
+        double logl;
+        void compute_logl();
+
     public:
         // Do-nothing constructor
         BetaBinomial();
@@ -32,14 +37,18 @@ class BetaBinomial
         // Printing to stream
         void print(std::ostream& out) const;
 
+        // A getter
+        double get_theta() const
+        { return theta; }
+
     public:
         // A few options to use for `distance`
         static double parameter_distance(const BetaBinomial& b1,
                                          const BetaBinomial& b2);
-        static double data_distance(const BetaBinomial& b1,
-                                    const BetaBinomial& b2);
-        static double joint_distance(const BetaBinomial& b1,
-                                     const BetaBinomial& b2);
+/*        static double data_distance(const BetaBinomial& b1,*/
+/*                                    const BetaBinomial& b2);*/
+/*        static double joint_distance(const BetaBinomial& b1,*/
+/*                                     const BetaBinomial& b2);*/
 
 
 };
